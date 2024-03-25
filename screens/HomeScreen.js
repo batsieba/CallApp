@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Button, Alert } from 'react-native'
+import { View, Text, TextInput, Button, Alert, Linking } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { StatusBar } from 'expo-status-bar'
@@ -27,6 +27,23 @@ export default function HomeScreen() {
 
       // Perform action to initiate call with provided data
     // This is where you would initiate the call using phone numbers and set duration
+
+    // Open phone app to initiate call
+    Linking.openURL(`tel:${phoneNumber1}`).then(supported => {
+        if (!supported) {
+            Alert.alert('Phone Call Not Supported', 'Phone call functionality is not supported on this device.');
+        } else {
+            // If call to first number is initiated successfully, wait for duration and then call second number
+            setTimeout(() => {
+                Linking.openURL(`tel:${phoneNumber2}`).then(supported => {
+                    if (!supported) {
+                        Alert.alert('Phone Call Not Supported', 'Phone call functionality is not supported on this device.');
+                    }
+                });
+            }, parseInt(duration) * 10000); // converting minutes to milliseconds
+        }
+    }).catch(error => console.log('Error occurred while initiating phone call:', error));
+
 
     // Reset form fields
     setPhoneNumber1('');
