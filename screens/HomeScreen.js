@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Button, Alert, Linking } from 'react-native'
+import { View, Text, TextInput, Button, Alert, Linking, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { StatusBar } from 'expo-status-bar'
@@ -66,7 +66,7 @@ export default function HomeScreen() {
       <StatusBar barStyle="dark-content"/>
 
       {/* top row */}
-      <View className="flex-row items-center space-x-2 px-3 pb-2 m-5">
+      <View className="flex-row items-center space-x-2 px-3 pb-2 m-5 bg-gray-100 rounded-xl">
         {/* <View className="flex-row flex-1 items-center p-3  border border-gray-300"> */}
            <Icon.PhoneCall height={25} width={25} stroke="green"/>
            <Text className="ml-4 text-green-900 text-2xl p-2 ">BTY CALL</Text>
@@ -81,7 +81,7 @@ export default function HomeScreen() {
       <Text style={{color:themeColors.text}} className="text-center text-3xl">Start Your Call</Text>
 
       {/* call form */}
-      <View className="p-4 m-1 bg-gray-100 rounded-xl ">
+      <View className="p-4 m-5 bg-gray-100 rounded-xl ">
 
       <View className="flex-row items-center space-x-2 px-4 pb-2">
         <Text>Phone 1: </Text>
@@ -145,8 +145,17 @@ export default function HomeScreen() {
         </View>
       </View>
 
+      <TouchableOpacity
+        onPress={handleCall}
+        style={{backgroundColor: themeColors.bgColor(0.8)}}
+        className="flex-row justify-between items-center mx-5 mt-7 rounded-full p-4 py-3 shadow-lg"
+      >
+        
+        <Text className="flex-1 text-center font-extrabold text-white text-lg">Submit Call</Text>
 
-      <Button className="text-white-500" style={{backgroundColor:themeColors.bgColor(1)}} title="Submit Call" onPress={handleCall} />
+      </TouchableOpacity>
+
+      {/* <Button className="text-white-500" style={{backgroundColor:themeColors.bgColor(1)}} title="Submit Call" onPress={handleCall} /> */}
     </View>
 
     </SafeAreaView>
