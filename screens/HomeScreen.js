@@ -66,11 +66,11 @@ export default function HomeScreen() {
       <StatusBar barStyle="dark-content"/>
 
       {/* top row */}
-      <View className="flex-row items-center space-x-2 px-4 pb-2">
-        <View className="flex-row flex-1 items-center p-3  border border-gray-300">
-           <Icon.PhoneCall height={25} width={25} stroke="gray"/>
-           <Text >Call Anywhere</Text>
-        </View>
+      <View className="flex-row items-center space-x-2 px-3 pb-2 m-5">
+        {/* <View className="flex-row flex-1 items-center p-3  border border-gray-300"> */}
+           <Icon.PhoneCall height={25} width={25} stroke="green"/>
+           <Text className="ml-4 text-green-900 text-2xl p-2 ">BTY CALL</Text>
+        {/* </View> */}
         
       </View>
 
